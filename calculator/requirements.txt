@@ -11,4 +11,3 @@ websockets==8.1
 wsproto==0.15.0
 xkit==0.0.0
 uvloop>=0.14.0
-FastAPI[all]

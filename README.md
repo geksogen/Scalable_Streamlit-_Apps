@@ -8,7 +8,8 @@ sudo apt-get update
 sudo apt install uvicorn
 sudo apt install python3-pip
 
-pip3 install -r requierments.txt
+pip3 install -r requirements.txt
+pip3 install FastAPI[all]
 pip3 install --upgrade jinja2
 
 
