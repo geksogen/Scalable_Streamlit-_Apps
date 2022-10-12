@@ -2,21 +2,16 @@
 
 ## Поднимаем VM из terraform
 Конфигурация VM - дирректория test_to
-```BASH
-instance_output = [
-  "vm0: fhm8kgut4845v2h652u6: 10.128.0.17: 62.84.126.201",
-]
-```
-```BASH
-ssh student@62.84.126.201
-```
-
-## Ставим Docker (уже установлен)
-
-## Тянем репо с demo приложением
 
 ```BASH
-git clone https://github.com/streamlit/demo-face-gan.git
+sudo apt-get update
+sudo apt install uvicorn
+sudo apt install python3-pip
+
+pip3 install -r requierments.txt
+pip3 install --upgrade jinja2
+
+
 ```
 
 ## Создаем Dockerfile
@@ -42,7 +37,7 @@ CMD streamlit run app.py
 
 https://stackoverflow.com/questions/68673221/warning-running-pip-as-the-root-user
 
-pip install --upgrade jinja2
+
 ## Run streamlit
 python3 -m streamlit run stream_lit.py
 
