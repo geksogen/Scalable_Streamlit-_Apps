@@ -19,4 +19,4 @@ FROM python:3.9-slim
 COPY --from=builder /opt/venv /opt/venv
 WORKDIR /code
 ENV PATH="/opt/venv/bin:$PATH"
-CMD ["uvicorn", "fast_api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "code.fast_api:app", "--host", "0.0.0.0", "--port", "8000"]
