@@ -1,10 +1,24 @@
 FROM python:3.8-slim-buster
 
-WORKDIR /code
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ARG DEBIAN_FRONTEND=noninteractive
+ARG DEBCONF_NOWARNINGS="yes"
 
-COPY requirements.txt requirements.txt
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc
+
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+COPY requirements.txt .
+COPY calculator.py .
 RUN pip3 install -r requirements.txt
 
-COPY ./fast_api.py /code/
+# final stage
+FROM python:3.9-slim
+COPY --from=builder /opt/venv /opt/venv
+WORKDIR /app
+ENV PATH="/opt/venv/bin:$PATH"
 
 CMD [ "uvicorn", "fast_api:app", "--host=0.0.0.0", "--port=8000"]
