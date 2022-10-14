@@ -13,6 +13,7 @@ RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 COPY requirements.txt .
+COPY calculator.py .
 RUN pip install -r requirements.txt
 
 
@@ -24,3 +25,5 @@ COPY --from=builder /opt/venv /opt/venv
 WORKDIR /app
 
 ENV PATH="/opt/venv/bin:$PATH"
+
+CMD [ "uvicorn", "fast_api:app", "--host=0.0.0.0", "--port=8000"]
