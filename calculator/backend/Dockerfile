@@ -19,4 +19,4 @@ COPY ./requirements.txt /code/requirements.txt
 COPY ./app /code/app
 RUN pip install -r /code/requirements.txt
 
-CMD ["uvicorn", "code.fast_api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.fast_api:app", "--host", "0.0.0.0", "--port", "8000"]
