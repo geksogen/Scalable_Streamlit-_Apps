@@ -14,7 +14,7 @@ COPY ./requirements.txt /code/requirements.txt
 COPY ./calculator.py /code/calculator.py
 RUN pip install -r /code/requirements.txt
 
-# final stagg
+# final stag
 FROM python:3.9-slim
 COPY --from=builder /opt/venv /opt/venv
 WORKDIR /code
