@@ -10,6 +10,7 @@ RUN apt-get update
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
+COPY ./fast_api.py /code/calculator.py
 COPY ./requirements.txt /code/requirements.txt
 COPY ./calculator.py /code/calculator.py
 RUN pip install -r /code/requirements.txt
