@@ -1,9 +1,10 @@
-FROM python:3.8-slim-buster
+# temp stage
+FROM python:3.9-slim as builder
+
+WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ARG DEBIAN_FRONTEND=noninteractive
-ARG DEBCONF_NOWARNINGS="yes"
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends gcc
@@ -12,13 +13,14 @@ RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 COPY requirements.txt .
-COPY calculator.py .
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
+
 
 # final stage
 FROM python:3.9-slim
-COPY --from=builder /opt/venv /opt/venv
-WORKDIR /app
-ENV PATH="/opt/venv/bin:$PATH"
 
-CMD [ "uvicorn", "fast_api:app", "--host=0.0.0.0", "--port=8000"]
+COPY --from=builder /opt/venv /opt/venv
+
+WORKDIR /app
+
+ENV PATH="/opt/venv/bin:$PATH"
