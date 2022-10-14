@@ -46,4 +46,6 @@ python3 -m streamlit run stream_lit.py
 uvicorn fast_api:app --host 0.0.0.0 --port 8000
 
 
-
+## Docker
+sudo docker build -t my_app:4 .
+sudo docker run --name app_back --network=host my_app:4

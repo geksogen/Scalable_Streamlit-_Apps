@@ -6,8 +6,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends gcc
+RUN apt-get update
 
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
@@ -15,9 +14,9 @@ ENV PATH="/opt/venv/bin:$PATH"
 COPY requirements.txt .
 COPY calculator.py .
 RUN pip install -r requirements.txt
+RUN apt install uvicorn
 
-
-# final stage
+# final stag
 FROM python:3.9-slim
 
 COPY --from=builder /opt/venv /opt/venv
