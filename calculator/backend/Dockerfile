@@ -14,7 +14,6 @@ ENV PATH="/opt/venv/bin:$PATH"
 COPY requirements.txt .
 COPY calculator.py .
 RUN pip install -r requirements.txt
-RUN apt install uvicorn
 
 # final stag
 FROM python:3.9-slim
