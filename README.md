@@ -16,6 +16,7 @@ pip3 install --upgrade jinja2
 ```
 
 https://stackoverflow.com/questions/68673221/warning-running-pip-as-the-root-user
+https://fastapi.tiangolo.com/deployment/docker/#build-a-docker-image-for-fastapi
 
 ## Run streamlit
 python3 -m streamlit run stream_lit.py
