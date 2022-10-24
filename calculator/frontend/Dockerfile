@@ -16,5 +16,6 @@ WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
 COPY ./app /code/app
 RUN pip install -r /code/requirements.txt
+RUN pip install --upgrade jinja2
 
 CMD ["streamlit", "run", "stream_lit.py"]
