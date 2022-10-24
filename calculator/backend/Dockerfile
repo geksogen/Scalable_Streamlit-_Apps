@@ -7,8 +7,6 @@ RUN apt-get update
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-
-
 # final stag
 FROM python:3.9-slim
 COPY --from=builder /opt/venv /opt/venv
