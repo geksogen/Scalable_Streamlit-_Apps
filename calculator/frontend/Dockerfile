@@ -18,4 +18,4 @@ COPY ./app /code/app
 RUN pip install -r /code/requirements.txt
 RUN pip install --upgrade jinja2
 
-CMD ["streamlit", "run", "stream_lit.py"]
+CMD ["streamlit", "run", "./app/stream_lit.py"]
