@@ -1,0 +1,11 @@
+numpy==1.23.3
+pandas==1.5.0
+pydantic==1.8.2
+pytest==6.2.5
+requests==2.26.0
+requests-unixsocket==0.2.0
+streamlit==1.13.0
+websockets==8.1
+wsproto==0.15.0
+xkit==0.0.0
+uvloop>=0.14.0

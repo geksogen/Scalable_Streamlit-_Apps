@@ -27,3 +27,6 @@ uvicorn fast_api:app --host 0.0.0.0 --port 8000
 ## Docker
 sudo docker build -t my_app:6 .
 sudo docker run --name app_back --network=host my_app:6
+sudo docker stop $(sudo docker ps -aq)
+sudo docker rm $(sudo docker ps -aq)
+sudo docker rmi $(sudo docker images -q)
