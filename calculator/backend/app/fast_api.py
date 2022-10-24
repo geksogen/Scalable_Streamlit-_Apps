@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import secrets
-from calculator import calculate
+#from calculator import calculate
 
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
@@ -28,5 +28,17 @@ def get_current_username(credentials: HTTPBasicCredentials = Depends(security)):
 
 @app.post("/calculate")
 def operate(input:User_input):
+    def calculate(operation, x, y):
+        if operation == 'Addition':
+            return x + y
+        elif operation == 'Subtraction':
+            if x > y:
+                return x - y
+            else:
+                return y - x
+        elif operation == 'Multiplication':
+            return x * y
+        elif operation == 'Division':
+            return x / y
     result = calculate(input.operation, input.x, input.y)
     return result

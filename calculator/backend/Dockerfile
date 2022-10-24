@@ -16,7 +16,6 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
-COPY ./backend/app/calculator.py /code/calculator.py
 COPY ./app /code/app
 RUN pip install -r /code/requirements.txt
 
