@@ -1,8 +1,8 @@
-version: '3'
+version: '3.9'
 
 services:
   frontend:
-    build: frontend
+    build: ./frontend
     ports:
       - 8501:8501
     depends_on:
@@ -10,6 +10,6 @@ services:
     volumes:
         - ./tmp/save:/tmp/save
   backend:
-    build: backend
+    build: ./backend
     ports:
       - 8081:8081
