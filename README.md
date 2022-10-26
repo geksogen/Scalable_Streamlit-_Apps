@@ -55,5 +55,6 @@ sudo apt-get update
 
 ### Install docker and docker compose on Ubuntu
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo service docker start
 ```
 
