@@ -1,6 +1,5 @@
 import requests
 import streamlit as st
-from PIL import Image
 
 STYLES = {
     "candy": "candy",
@@ -21,16 +20,17 @@ st.set_option("deprecation.showfileUploaderEncoding", False)
 st.title("File transfer web app")
 
 # displays a file uploader widget
-image = st.file_uploader("Choose an image")
+image = st.file_uploader("Choose an file")
 
 # displays the select widget for the styles
 #style = st.selectbox("Choose the style", [i for i in STYLES.keys()])
 
 # displays a button
-if st.button("Style Transfer"):
+if st.button("File Transfer"):
     #if image is not None and style is not None:
     files = {"file": image.getvalue()}
     res = requests.post(f"http://51.250.66.35:8081/upload", files=files)
     img_path = res.json()
     if img_path != None:
         st.text("File upload to back- OK!")
+        st.text(img_path)

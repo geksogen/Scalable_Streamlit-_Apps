@@ -21,7 +21,6 @@ async def post_endpoint(file: UploadFile=File(...)):
     async with aiofiles.open('/tmp/save/tmp.txt', 'wb') as out_file:
         content = await file.read()  # async read
         await out_file.write(content)  # async write
-        print('jr')
     return {"name": content}
 #
 
