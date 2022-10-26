@@ -54,7 +54,10 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 sudo apt-get update
 
 ### Install docker and docker compose on Ubuntu
+sudo apt install docker-compose
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo service docker start
+
+sudo docker-compose up -d --build
 ```
 
