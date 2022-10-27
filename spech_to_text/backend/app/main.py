@@ -16,7 +16,7 @@ def read_root():
 
 
 @app.post("/upload")
-async def post_endpoint(file: UploadFile=File(...)):
+async def post_endpoint(file: bytes = File(...)):
     bytes_data = file
     f = open("./save/soung.mp3", "wb")
     f.write(bytes_data)
