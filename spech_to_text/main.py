@@ -3,19 +3,27 @@ from vosk import Model, KaldiRecognizer, SetLogLevel
 from pydub import AudioSegment
 import json
 import os
+
 import requests
 
-# Настройка боковой панели
-st.sidebar.title("About")
-st.sidebar.info(
-    """
-    This service for recognition and processing audio to text.
-    """
-)
-st.sidebar.info("Feel free to collaborate and comment on the work. The github link can be found "
-                "(https://github.com/")
 
-st.header("Trascribe Audio, only mp3 format!")
+STYLES = {
+    "candy": "candy",
+    "composition 6": "composition_vii",
+    "feathers": "feathers",
+    "la_muse": "la_muse",
+    "mosaic": "mosaic",
+    "starry night": "starry_night",
+    "the scream": "the_scream",
+    "the wave": "the_wave",
+    "udnie": "udnie",
+}
+
+# https://discuss.streamlit.io/t/version-0-64-0-deprecation-warning-for-st-file-uploader-decoding/4465
+st.set_option("deprecation.showfileUploaderEncoding", False)
+
+# defines an h1 header
+st.title("File transfer web app")
 fileObject = st.file_uploader(label="Please upload your file")
 
 if st.button("File Transfer"):
