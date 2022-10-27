@@ -18,10 +18,9 @@ def read_root():
 @app.post("/upload")
 async def post_endpoint(file: UploadFile=File(...)):
     async with aiofiles.open('./save/soung.mp3', mode = 'wb', ) as out_file:
-        buffer_size = 2 ** 10 * 8
-        content = await file.read(buffer_size)  # async rea
-        await out_file.write(content)  # async write
-    return {"name": content}
+        #content = await file.read()  # async rea
+        await out_file.write(file)  # async write
+    #return {"name": content}
 
 
 if __name__ == "__main__":
