@@ -25,7 +25,7 @@ async def post_endpoint(file: bytes = File(...)):
     #async with aiofiles.open('./save/soung.mp3', mode = 'wb', ) as out_file:
         #content = await file.read()  # async rea
         #await out_file.write(file)  # async write
-    return {"name": len(f)}
+    #return {"name": len(f)}
 
 
 if __name__ == "__main__":
