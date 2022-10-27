@@ -22,11 +22,11 @@ fileObject = st.file_uploader(label="Please upload your file")
 if st.button("File Transfer"):
     #if image is not None and style is not None:
     files = {"file": fileObject.getvalue()}
-    res = requests.post(f"http://51.250.66.35:8081/upload", files=files)
+    res = requests.post(f"http://178.154.240.11:8081/upload", files=files)
     img_path = res.json()
     if img_path != None:
         st.text("File upload to back- OK! Processing.....")
-'''
+
 if fileObject:
     st.text("Processing: ")
 
