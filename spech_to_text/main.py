@@ -73,7 +73,7 @@ if fileObject:
         text = json.loads(result)["text"]
 
         #cased = subprocess.check_output('python3 recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True,
-                                        text=True, input=text)
+        #                               text=True, input=text)
 
         audio_file = open('soung-extract.mp3', 'rb')
         audio_bytes = audio_file.read()
