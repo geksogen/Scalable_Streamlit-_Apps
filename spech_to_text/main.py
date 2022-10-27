@@ -1,9 +1,9 @@
 import streamlit as st
 from vosk import Model, KaldiRecognizer, SetLogLevel
 from pydub import AudioSegment
-import subprocess
 import json
 import os
+import requests
 
 # Настройка боковой панели
 st.sidebar.title("About")
@@ -13,12 +13,19 @@ st.sidebar.info(
     """
 )
 st.sidebar.info("Feel free to collaborate and comment on the work. The github link can be found "
-                "[here](https://github.com/")
-
+                "(https://github.com/")
 
 st.header("Trascribe Audio, only mp3 format!")
 fileObject = st.file_uploader(label="Please upload your file")
 
+if st.button("File Transfer"):
+    #if image is not None and style is not None:
+    files = {"file": fileObject.getvalue()}
+    res = requests.post(f"http://51.250.66.35:8081/upload", files=files)
+    img_path = res.json()
+    if img_path != None:
+        st.text("File upload to back- OK! Processing.....")
+'''
 if fileObject:
     st.text("Processing: ")
 
@@ -87,3 +94,4 @@ if fileObject:
         os.remove("soung-extract.mp3")
 
     st.success('Done!')
+'''
