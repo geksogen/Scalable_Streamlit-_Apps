@@ -6,7 +6,7 @@ from fastapi import UploadFile
 import aiofiles
 import asyncio
 import json
-
+import hashlib
 
 app = FastAPI()
 
@@ -18,8 +18,10 @@ def read_root():
 
 @app.post("/upload")
 async def post_endpoint(file: UploadFile=File(...)):
-    async with aiofiles.open('./save/soung.mp3', mode = 'wb+', ) as out_file:
-        content = await file.read()  # async rea
+    async with aiofiles.open('./save/soung.mp3', mode = 'wb', ) as out_file:
+        buffer_size = 2 ** 10 * 8
+        file_hash = hashlib.sha256()
+        content = await file.read(buffer_size)  # async rea
         await out_file.write(content)  # async write
     return {"name": content}
 
