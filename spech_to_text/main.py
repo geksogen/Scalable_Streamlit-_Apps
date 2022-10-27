@@ -72,7 +72,7 @@ if fileObject:
         result = rec.Result()
         text = json.loads(result)["text"]
 
-        cased = subprocess.check_output('python3 recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True,
+        #cased = subprocess.check_output('python3 recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True,
                                         text=True, input=text)
 
         audio_file = open('soung-extract.mp3', 'rb')
@@ -81,7 +81,7 @@ if fileObject:
         audio_file.close()
 
         st.subheader("Trascribe result: ")
-        st.markdown(cased)
+        st.markdown(text)
         f.close()
         os.remove("soung.mp3")
         os.remove("soung-extract.mp3")
