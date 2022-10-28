@@ -39,7 +39,7 @@ async def post_endpoint(file: bytes = File(...)):
         song = AudioSegment.from_mp3('./save/soung.mp3')
         extract = song[startTime:endTime]
 
-        # Saving
+        # Saving extract
         extract.export('./save/extract.mp3', format="mp3")
 
     #return {"name": content}
