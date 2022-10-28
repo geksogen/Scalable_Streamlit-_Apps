@@ -6,7 +6,7 @@ from fastapi import UploadFile
 import aiofiles
 import asyncio
 import json
-
+from pathlib import Path
 app = FastAPI()
 
 
@@ -16,18 +16,15 @@ def read_root():
 
 
 @app.post("/upload")
-async def post_endpoint(file: bytes | None = File(None)):
+async def post_endpoint(file: UploadFile):
     #bytes_data = file
     #f = open("./save/soung.mp3", "wb")
     #f.write(bytes_data)
     #f.close()
-    if not file:
-        return {'message': 'No file sent'}
-    else:
-        async with aiofiles.open('./save/soung.mp3', mode = 'wb', ) as out_file:
-            content = await file.read()  # async rea
-            await out_file.write(file)  # async write
-            #return {'name': , 'bytes': len(file)}
+
+    path = Path('/save') / file.filename
+    size = path.write_bytes(await file.read())
+    return {'name': size}
 
 
 if __name__ == "__main__":
