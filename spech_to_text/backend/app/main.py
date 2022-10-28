@@ -47,7 +47,7 @@ async def post_endpoint(style: str, file: bytes = File(...)):
         FRAME_RATE = 16000
         CHANNELS = 1
 
-        model = Model("model")
+        model = Model(style)
         rec = KaldiRecognizer(model, FRAME_RATE)
         rec.SetWords(True)
 

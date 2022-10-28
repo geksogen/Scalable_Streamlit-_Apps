@@ -7,7 +7,7 @@ STYLES = {
     "Smail_model": "model_smail"
 }
 
-style = st.selectbox("Choose the style", [i for i in STYLES.keys()])
+style = st.selectbox("Choose the size model", [i for i in STYLES.keys()])
 
 # Настройка боковой панели
 st.sidebar.title("About")
