@@ -28,7 +28,7 @@ async def post_endpoint(file: bytes = File(...)):
 
     async with aiofiles.open('./save/soung.mp3', 'wb') as out_file:
         #content = await file.read()  # async read
-        await out_file.write_bytes(file)  # async write
+        await out_file.write(file)  # async write
     #return {"name": content}
 
 
