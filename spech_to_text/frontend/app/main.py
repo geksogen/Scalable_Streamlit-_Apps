@@ -26,7 +26,6 @@ if st.button("File Transfer"):
     img_path = res.json()
     if img_path != None:
         with st.spinner('Wait for it...'):
-            st.text(img_path.get("name"))
 
             audio_file = open('../../backend/app/save/extract.mp3', 'rb')
             audio_bytes = audio_file.read()
@@ -35,3 +34,8 @@ if st.button("File Transfer"):
 
             st.subheader("Trascribe result: ")
             st.markdown(img_path.get("name"))
+
+            os.remove("../../backend/app/save/soung.mp3")
+            os.remove("../../backend/app/save/extract.mp3")
+
+        st.success('Done!')
