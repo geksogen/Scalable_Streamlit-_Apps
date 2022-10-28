@@ -26,4 +26,4 @@ if st.button("File Transfer"):
     img_path = res.json()
     if img_path != None:
         st.text("File upload to back- OK! Processing.....")
-        st.text(img_path.name)
+        #st.text(img_path.name)
