@@ -20,10 +20,11 @@ st.header("Trascribe Audio, only mp3 format!")
 fileObject = st.file_uploader(label="Please upload your file")
 
 if st.button("Transcription"):
-    files = {"file": fileObject.getvalue()}
-    res = requests.post(f"http://178.154.240.11:8081/upload", files=files)
-    img_path = res.json()
     with st.spinner('Wait for it...'):
+        files = {"file": fileObject.getvalue()}
+        res = requests.post(f"http://178.154.240.11:8081/upload", files=files)
+        img_path = res.json()
+
         audio_file = open('../../backend/app/save/extract.mp3', 'rb')
         audio_bytes = audio_file.read()
         st.audio(audio_bytes, format='audio / ogg')
