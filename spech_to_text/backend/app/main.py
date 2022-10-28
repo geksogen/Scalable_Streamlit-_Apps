@@ -6,7 +6,11 @@ from fastapi import UploadFile
 import aiofiles
 import asyncio
 import json
-from pathlib import Path
+from vosk import Model, KaldiRecognizer, SetLogLevel
+from pydub import AudioSegment
+import json
+import os
+
 app = FastAPI()
 
 
@@ -21,6 +25,22 @@ async def post_endpoint(file: bytes = File(...)):
     #Save Upload file to disk
     async with aiofiles.open('./save/soung.mp3', 'wb') as out_file:
         await out_file.write(file)  # async write
+
+        startMin = 0
+        startSec = 0
+        endMin = 0
+        endSec = 60
+
+        # Time to miliseconds
+        startTime = startMin * 60 * 1000 + startSec * 1000
+        endTime = endMin * 60 * 1000 + endSec * 1000
+
+        # Opening file and extracting segment
+        song = AudioSegment.from_mp3('soung.mp3')
+        extract = song[startTime:endTime]
+
+        # Saving
+        extract.export('extract.mp3', format="mp3")
 
     #return {"name": content}
 
