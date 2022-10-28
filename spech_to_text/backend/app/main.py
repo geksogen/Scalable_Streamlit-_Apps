@@ -65,8 +65,8 @@ async def post_endpoint(file: bytes = File(...)):
         rec.AcceptWaveform(mp3.raw_data)
         result = rec.Result()
         text = json.loads(result)["text"]
-        print(text)
-    #return {"name": text}
+        #print(text)
+    return {"name": text}
 
 
 if __name__ == "__main__":
