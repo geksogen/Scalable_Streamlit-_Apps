@@ -2,6 +2,13 @@ import streamlit as st
 import os
 import requests
 
+STYLES = {
+    "Big_model": "model_big",
+    "Smail_model": "model_smail"
+}
+
+style = st.selectbox("Choose the style", [i for i in STYLES.keys()])
+
 # Настройка боковой панели
 st.sidebar.title("About")
 st.sidebar.info(
@@ -18,7 +25,7 @@ fileObject = st.file_uploader(label="Please upload your file")
 if st.button("Transcription"):
     with st.spinner('Wait for precessing:...'):
         files = {"file": fileObject.getvalue()}
-        res = requests.post(f"http://178.154.240.11:8081/upload", files=files)
+        res = requests.post(f"http://178.154.240.11:8081/{style}", files=files)
         img_path = res.json()
 
         audio_file = open('../../backend/app/save/extract.mp3', 'rb')

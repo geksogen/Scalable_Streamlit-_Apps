@@ -13,8 +13,8 @@ app = FastAPI()
 #def read_root():
 #    return {"message": "Welcome from the API"}
 
-@app.post("/upload")
-async def post_endpoint(file: bytes = File(...)):
+@app.post("/{style}")
+async def post_endpoint(style: str, file: bytes = File(...)):
 
     #Save Upload file to disk
     async with aiofiles.open('./save/soung.mp3', 'wb') as out_file:
@@ -38,7 +38,7 @@ async def post_endpoint(file: bytes = File(...)):
 
         # NLP processing
         SetLogLevel(0)
-        if not os.path.exists("model"):
+        if not os.path.exists(style):
             print(
                 "Please download the model from https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
             exit(1)
