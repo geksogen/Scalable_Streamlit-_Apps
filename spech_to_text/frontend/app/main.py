@@ -25,5 +25,13 @@ if st.button("File Transfer"):
     res = requests.post(f"http://178.154.240.11:8081/upload", files=files)
     img_path = res.json()
     if img_path != None:
-        st.text("File upload to back- OK! Processing.....")
-        st.text(img_path.get("name"))
+        with st.spinner('Wait for it...'):
+            st.text(img_path.get("name"))
+
+            audio_file = open('../../backend/app/save/extract.mp3', 'rb')
+            audio_bytes = audio_file.read()
+            st.audio(audio_bytes, format='audio / ogg')
+            audio_file.close()
+
+            st.subheader("Trascribe result: ")
+            st.markdown(img_path.get("name"))
