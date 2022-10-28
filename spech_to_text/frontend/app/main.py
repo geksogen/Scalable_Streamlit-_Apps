@@ -26,6 +26,7 @@ if st.button("File Transfer"):
     img_path = res.json()
     if img_path != None:
         with st.spinner('Wait for it...'):
+            SetLogLevel(0)
 
             audio_file = open('../../backend/app/save/extract.mp3', 'rb')
             audio_bytes = audio_file.read()
