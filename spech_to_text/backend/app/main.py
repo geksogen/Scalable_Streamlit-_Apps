@@ -39,7 +39,8 @@ async def post_endpoint(style: str, file: bytes = File(...)):
 
         # NLP processing
         SetLogLevel(0)
-        if not os.path.exists(config.STYLES[style]):
+        x = config.STYLES[style]
+        if not os.path.exists(x):
             print(
                 "Please download the model from https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
             exit(1)
@@ -48,7 +49,7 @@ async def post_endpoint(style: str, file: bytes = File(...)):
         FRAME_RATE = 16000
         CHANNELS = 1
 
-        model = Model(config.STYLES[style])
+        model = Model("model_smail")
         rec = KaldiRecognizer(model, FRAME_RATE)
         rec.SetWords(True)
 
