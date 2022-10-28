@@ -20,7 +20,7 @@ st.header("Trascribe Audio, only mp3 format!")
 fileObject = st.file_uploader(label="Please upload your file")
 
 if st.button("Transcription"):
-    with st.spinner('Wait for it...'):
+    with st.spinner('Wait for precessing:...'):
         files = {"file": fileObject.getvalue()}
         res = requests.post(f"http://178.154.240.11:8081/upload", files=files)
         img_path = res.json()
