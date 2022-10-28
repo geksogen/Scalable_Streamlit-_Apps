@@ -19,24 +19,19 @@ st.sidebar.info("Feel free to collaborate and comment on the work. The github li
 st.header("Trascribe Audio, only mp3 format!")
 fileObject = st.file_uploader(label="Please upload your file")
 
-if st.button("File Transfer"):
-    #if image is not None and style is not None:
+if st.button("Transcription"):
     files = {"file": fileObject.getvalue()}
     res = requests.post(f"http://178.154.240.11:8081/upload", files=files)
     img_path = res.json()
-    if img_path != None:
-        with st.spinner('Wait for it...'):
-            SetLogLevel(0)
+    with st.spinner('Wait for it...'):
+        audio_file = open('../../backend/app/save/extract.mp3', 'rb')
+        audio_bytes = audio_file.read()
+        st.audio(audio_bytes, format='audio / ogg')
+        audio_file.close()
 
-            audio_file = open('../../backend/app/save/extract.mp3', 'rb')
-            audio_bytes = audio_file.read()
-            st.audio(audio_bytes, format='audio / ogg')
-            audio_file.close()
+        st.subheader("Trascribe result: ")
+        st.markdown(img_path.get("name"))
 
-            st.subheader("Trascribe result: ")
-            st.markdown(img_path.get("name"))
-
-            os.remove("../../backend/app/save/soung.mp3")
-            os.remove("../../backend/app/save/extract.mp3")
-
-        st.success('Done!')
+        os.remove("../../backend/app/save/soung.mp3")
+        os.remove("../../backend/app/save/extract.mp3")
+    st.success('Done!')
