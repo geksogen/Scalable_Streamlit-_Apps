@@ -17,7 +17,7 @@ app = FastAPI()
 @app.post("/{style}")
 async def post_endpoint(style: str, file: bytes = File(...)):
 
-    #Save Upload file to disk
+    #Save Upload file to disk s
     async with aiofiles.open('./save/soung.mp3', 'wb') as out_file:
         await out_file.write(file)  # async write
 
