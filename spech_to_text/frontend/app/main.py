@@ -1,9 +1,5 @@
 import streamlit as st
-from vosk import Model, KaldiRecognizer, SetLogLevel
-from pydub import AudioSegment
-import json
 import os
-
 import requests
 
 # Настройка боковой панели

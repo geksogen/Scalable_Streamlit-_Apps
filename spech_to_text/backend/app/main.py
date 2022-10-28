@@ -1,11 +1,7 @@
-import uuid
 import uvicorn
 from fastapi import File
 from fastapi import FastAPI
-from fastapi import UploadFile
 import aiofiles
-import asyncio
-import json
 from vosk import Model, KaldiRecognizer, SetLogLevel
 from pydub import AudioSegment
 import json
@@ -13,11 +9,9 @@ import os
 
 app = FastAPI()
 
-
-@app.get("/")
-def read_root():
-    return {"message": "Welcome from the API"}
-
+#@app.get("/")
+#def read_root():
+#    return {"message": "Welcome from the API"}
 
 @app.post("/upload")
 async def post_endpoint(file: bytes = File(...)):
@@ -49,7 +43,7 @@ async def post_endpoint(file: bytes = File(...)):
                 "Please download the model from https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
             exit(1)
 
-        # Устанавливаем Frame Rate
+        # Set Frame Rate
         FRAME_RATE = 16000
         CHANNELS = 1
 
@@ -57,7 +51,7 @@ async def post_endpoint(file: bytes = File(...)):
         rec = KaldiRecognizer(model, FRAME_RATE)
         rec.SetWords(True)
 
-        # Используя библиотеку pydub делаем предобработку аудио
+        # pydub preprocessing audio file
         mp3 = AudioSegment.from_mp3("./save/extract.mp3")
         mp3 = mp3.set_channels(CHANNELS)
         mp3 = mp3.set_frame_rate(FRAME_RATE)
@@ -67,7 +61,6 @@ async def post_endpoint(file: bytes = File(...)):
         text = json.loads(result)["text"]
 
     return {"name": text}
-
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8081)
