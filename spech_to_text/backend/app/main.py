@@ -42,7 +42,7 @@ async def post_endpoint(file: bytes = File(...)):
         # Saving extract
         extract.export('./save/extract.mp3', format="mp3")
 
-        #NLP processing
+        # NLP processing
         SetLogLevel(0)
         if not os.path.exists("model"):
             print(
@@ -58,7 +58,7 @@ async def post_endpoint(file: bytes = File(...)):
         rec.SetWords(True)
 
         # Используя библиотеку pydub делаем предобработку аудио
-        mp3 = AudioSegment.from_mp3("extract.mp3")
+        mp3 = AudioSegment.from_mp3("./save/extract.mp3")
         mp3 = mp3.set_channels(CHANNELS)
         mp3 = mp3.set_frame_rate(FRAME_RATE)
 
