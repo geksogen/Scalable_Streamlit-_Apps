@@ -16,15 +16,20 @@ def read_root():
 
 
 @app.post("/upload")
-async def post_endpoint(file: UploadFile):
+async def post_endpoint(file: bytes = File(...)):
     #bytes_data = file
     #f = open("./save/soung.mp3", "wb")
     #f.write(bytes_data)
     #f.close()
 
-    path = Path('/save') / file.filename
-    size = path.write_bytes(await file.read())
-    return {'name': size}
+    #path = Path('/save') / file.filename
+    #size = path.write_bytes(await file.read())
+    #return {'name': size}
+
+    async with aiofiles.open('./save/soung.mp3', 'wb') as out_file:
+        content = await file.read()  # async read
+        await out_file.write_bytes(content)  # async write
+    return {"name": content}
 
 
 if __name__ == "__main__":
