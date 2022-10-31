@@ -3,28 +3,16 @@ FROM nvidia/cuda:11.8.0-base-ubuntu22.04
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update
-# Add Python ppa
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
-# Install essential Ubuntu packages
-# and upgrade pip
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
     wget \
     curl \
-    zip \
     unzip \
-    libgl-dev \
-    libblas-dev \
-    liblapack-dev \
-    python3-tk \
-    python3-wheel \
-    libhdf5-dev \
     python3.9 \
     python3.9-dev \
-    python3.9-distutils \
     ca-certificates &&\
     ln -s /usr/bin/python3.9 /usr/local/bin/python &&\
     ln -s /usr/bin/python3.9 /usr/local/bin/python3 &&\
