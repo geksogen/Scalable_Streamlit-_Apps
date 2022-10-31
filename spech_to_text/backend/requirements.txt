@@ -6,6 +6,5 @@ asyncio
 pydub
 vosk
 ffmpeg
-torch
 transformers
 ffprobe

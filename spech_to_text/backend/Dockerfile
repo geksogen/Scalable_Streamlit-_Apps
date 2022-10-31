@@ -16,6 +16,7 @@ WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
 COPY ./app /code/app
 RUN mkdir -p /tmp/save
+RUN pip install --default-timeout=900 torch
 #RUN sudo apt install ffmpeg
 RUN pip install -r /code/requirements.txt
 
