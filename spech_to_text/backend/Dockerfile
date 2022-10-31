@@ -4,7 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update
-RUN apt install python3
+RUN apt install -f python3
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
