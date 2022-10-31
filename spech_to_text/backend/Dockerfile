@@ -20,13 +20,6 @@ RUN apt-get install -y \
     rm get-pip.py &&\
     # best practice to keep the Docker image lean
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN python3 -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-
-# final stag
-FROM nnvidia/cuda:11.8.0-base-ubuntu22.04
-COPY --from=builder /opt/venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
 
 WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
