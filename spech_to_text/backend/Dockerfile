@@ -3,8 +3,12 @@ FROM nvidia/cuda:11.8.0-base-ubuntu22.04
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-#RUN apt-get update
-
+RUN apt-get update
+# Add Python ppa
+RUN apt-get install software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+# Install essential Ubuntu packages
+# and upgrade pip
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
