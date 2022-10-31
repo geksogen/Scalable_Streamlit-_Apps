@@ -13,7 +13,7 @@ RUN apt-get install -y \
     curl \
     python3.9 \
     python3.9-distutils
-RUN python -m venv /opt/venv
+RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 # final stag
