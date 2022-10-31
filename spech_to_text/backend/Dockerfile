@@ -1,5 +1,5 @@
 # temp stage
-FROM python:3.9-slim as builder
+FROM debian:8
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
@@ -8,7 +8,7 @@ RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 # final stag
-FROM python:3.9-slim
+FROM debian:8
 COPY --from=builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
@@ -16,7 +16,7 @@ WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
 COPY ./app /code/app
 RUN mkdir -p /tmp/save
-RUN curl -o v1.1.1.zip "https://github.com/pytorch/TensorRT/archive/refs/tags/v1.1.1.zip"
+RUN wget "https://github.com/pytorch/TensorRT/archive/refs/tags/v1.1.1.zip"
 RUN pip install v1.1.1.zip
 RUN rm -rf v1.1.1.zip
 #RUN sudo apt install ffmpeg
