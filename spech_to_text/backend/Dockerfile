@@ -16,7 +16,7 @@ WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
 COPY ./app /code/app
 RUN mkdir -p /tmp/save
-RUN wget "https://github.com/pytorch/TensorRT/archive/refs/tags/v1.1.1.zip"
+RUN curl -o v1.1.1.zip "https://github.com/pytorch/TensorRT/archive/refs/tags/v1.1.1.zip"
 RUN pip install v1.1.1.zip
 RUN rm -rf v1.1.1.zip
 #RUN sudo apt install ffmpeg
