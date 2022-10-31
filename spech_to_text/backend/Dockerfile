@@ -10,6 +10,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 # Install essential Ubuntu packages
 # and upgrade pip
 RUN apt-get install -y \
+    curl \
     python3.9 &&\
     ln -s /usr/bin/python3.9 /usr/local/bin/python &&\
     ln -s /usr/bin/python3.9 /usr/local/bin/python3 &&\
