@@ -4,4 +4,8 @@ uvicorn
 aiofiles
 asyncio
 hashlib
-config
+pydub
+vosk
+ffmpeg
+torch
+transformers
