@@ -23,7 +23,7 @@ RUN apt-get install -y \
 
 WORKDIR /code
 RUN python3 -m pip --no-cache-dir install \
-    torch==1.10.2+cu113
+    torch==1.10.2
 COPY ./requirements.txt /code/requirements.txt
 COPY ./app /code/app
 RUN mkdir -p /tmp/save
