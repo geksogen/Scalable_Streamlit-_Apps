@@ -3,7 +3,6 @@ python-multipart
 uvicorn
 aiofiles
 asyncio
-hashlib
 pydub
 vosk
 ffmpeg
