@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update
 # Add Python ppa
-RUN apt-get install software-properties-common
+RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
 # Install essential Ubuntu packages
 # and upgrade pip
