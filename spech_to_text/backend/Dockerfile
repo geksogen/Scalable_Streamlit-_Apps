@@ -16,7 +16,7 @@ WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
 COPY ./app /code/app
 RUN mkdir -p /tmp/save
-RUN apt install ffmpeg
+#RUN sudo apt install ffmpeg
 RUN pip install -r /code/requirements.txt
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8081"]

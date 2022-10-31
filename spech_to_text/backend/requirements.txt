@@ -9,3 +9,4 @@ vosk
 ffmpeg
 torch
 transformers
+ffprobe
