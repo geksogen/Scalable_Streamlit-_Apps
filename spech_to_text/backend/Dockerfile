@@ -1,5 +1,5 @@
 # temp stage
-FROM nvidia/cuda:11.8.0-base-ubuntu22.04
+FROM nvidia/cuda:11.8.0-base-ubuntu22.04 as builder
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
@@ -12,14 +12,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get install -y \
     curl \
     python3.9 \
-    python3.9-distutils &&\
-    ln -s /usr/bin/python3.9 /usr/local/bin/python &&\
-    ln -s /usr/bin/python3.9 /usr/local/bin/python3 &&\
-    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py &&\
-    python3 get-pip.py &&\
-    rm get-pip.py &&\
-    # best practice to keep the Docker image lean
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    python3.9-distutils
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
