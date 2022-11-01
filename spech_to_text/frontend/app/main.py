@@ -13,7 +13,7 @@ style = st.selectbox("Choose the size model", [i for i in STYLES.keys()])
 st.sidebar.title("About")
 st.sidebar.info(
     """
-    This service for recognition and processing audio to text.
+    This service for recognition and processing audio to text
     """
 )
 st.sidebar.info("Feel free to collaborate and comment on the work. The github link can be found "
@@ -25,7 +25,7 @@ fileObject = st.file_uploader(label="Please upload your file")
 if st.button("Transcription"):
     with st.spinner('Wait for precessing:...'):
         files = {"file": fileObject.getvalue()}
-        res = requests.post(f"http://178.154.240.11:8081/{style}", files=files)
+        res = requests.post(f"http://178.154.240.231/:8081/{style}", files=files)
         img_path = res.json()
 
         audio_file = open('../../backend/app/save/extract.mp3', 'rb')
