@@ -8,4 +8,4 @@ vosk
 ffmpeg
 transformers
 ffprobe
-torch
+torch==1.11.0

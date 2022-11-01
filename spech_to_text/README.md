@@ -9,6 +9,7 @@ sudo apt-get update
 sudo apt install python3-pip
 sudo apt install ffmpeg
 pip3 install -r ../requirements.txt
+pip3 install torch
 python3 ./main.py
 ```
 
