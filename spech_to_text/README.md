@@ -9,7 +9,6 @@ sudo apt-get update
 sudo apt install python3-pip
 sudo apt install ffmpeg
 pip3 install -r ../requirements.txt
-pip3 install torch
 python3 ./main.py
 ```
 
@@ -22,7 +21,7 @@ pip3 install --upgrade jinja2
 python3 -m streamlit run main.py
 ```
 
-https://python.astrotech.io/fastapi/fastapi/http-files.html
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
 
 
 
