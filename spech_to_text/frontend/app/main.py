@@ -42,9 +42,4 @@ if st.button("Transcription"):
         # Save and download transcribe text
         st.download_button('Download file', img_path.get("name"))
 
-        #with open('../../backend/app/save/text.txt') as f:
-        #    st.download_button('Download text', f)
-
-        #if st.download_button(...):
-        #    st.write('Thanks for downloading!')
     st.success('Done!')
