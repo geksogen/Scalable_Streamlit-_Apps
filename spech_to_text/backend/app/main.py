@@ -63,10 +63,10 @@ async def post_endpoint(style: str, file: bytes = File(...)):
         result = rec.Result()
         text = json.loads(result)["text"]
 
-        cased = subprocess.check_output('python3 ./recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True,
-                                       text=True, input=text)
+        #cased = subprocess.check_output('python3 ./recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True,
+        #                               text=True, input=text)
 
-    return {"name": cased}
+    return {"name": text}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8081)
