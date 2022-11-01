@@ -3,9 +3,11 @@
 ```BASH
 git clone https://github.com/geksogen/Scalable_Streamlit-_Apps.git
 cd backend/app
+mkdir save
 sh prepare_models.sh
 sudo apt-get update
 sudo apt install python3-pip
+sudo apt install ffmpeg
 pip3 install -r ../requirements.txt
 python3 ./main.py
 ```
