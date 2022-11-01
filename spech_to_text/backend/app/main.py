@@ -4,6 +4,7 @@ from fastapi import FastAPI
 import aiofiles
 from vosk import Model, KaldiRecognizer, SetLogLevel
 from pydub import AudioSegment
+import subprocess
 import json
 import os
 import config
@@ -62,7 +63,10 @@ async def post_endpoint(style: str, file: bytes = File(...)):
         result = rec.Result()
         text = json.loads(result)["text"]
 
-    return {"name": text}
+        cased = subprocess.check_output('python3 recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True,
+                                       text=True, input=text)
+
+    return {"name": cased}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8081)
