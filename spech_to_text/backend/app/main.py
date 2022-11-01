@@ -63,7 +63,7 @@ async def post_endpoint(style: str, file: bytes = File(...)):
         result = rec.Result()
         text = json.loads(result)["text"]
 
-        cased = subprocess.check_output('python3 recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True,
+        cased = subprocess.check_output('python3 ./recasepunc/recasepunc.py predict recasepunc/checkpoint', shell=True,
                                        text=True, input=text)
 
     return {"name": cased}
