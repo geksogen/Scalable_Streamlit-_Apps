@@ -19,7 +19,7 @@ st.sidebar.info(
 st.sidebar.info("Feel free to collaborate and comment on the work. The github link can be found "
                 "https://github.com/")
 
-st.header("Trascribe Audio, only mp3 format!")
+st.header("Trascribe Audio, only mp3 format! Cut first 10 seconds!")
 fileObject = st.file_uploader(label="Please upload your file")
 
 if st.button("Transcription"):
@@ -38,4 +38,13 @@ if st.button("Transcription"):
 
         os.remove("../../backend/app/save/soung.mp3")
         os.remove("../../backend/app/save/extract.mp3")
+
+        # Save and download transcribe text
+        st.download_button('Download file', img_path.get("name"))
+
+        with open('../../backend/app/save/text.txt') as f:
+            st.download_button('Download text', f)
+
+        if st.download_button(...):
+            st.write('Thanks for downloading!')
     st.success('Done!')

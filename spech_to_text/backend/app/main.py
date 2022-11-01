@@ -12,7 +12,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome from the API"}
+    return {"message": "Welcome from the API backend"}
 
 @app.post("/{style}")
 async def post_endpoint(style: str, file: bytes = File(...)):
