@@ -21,7 +21,5 @@ pip3 install --upgrade jinja2
 python3 -m streamlit run main.py
 ```
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
-
-
+![alt text](https://github.com/geksogen/Scalable_Streamlit-_Apps/raw/master/spech_to_text/index.png?raw=true)
 
